@@ -286,8 +286,18 @@
             $("#player_txt2").html($('#player2').val());
             $("#shot_txt2").html($('#shot2').val());
             $("#type_txt2").html($('#type2').val());
-
         });
+
+
+            $('#hole1').val('<%= hole1 %>');
+            $('#player1').val('<%= player1 %>');
+            $('#shot1').val('<%= shot1 %>');
+            $('#type1').val('<%= type1 %>');
+            $('#hole2').val('<%= hole2 %>');
+            $('#player2').val('<%= player2 %>');
+            $('#shot2').val('<%= shot2 %>');
+            $('#type2').val('<%= type2 %>');
+        
   
   
         socket.on("hole_click1", function (data) {
