@@ -1,0 +1,28 @@
+{
+  "player": [
+    "テスト太郎",
+    "テスト次郎"
+    ],
+  "hole": [
+    "1H",
+    "2H",
+    "3H",
+    "4H",
+    "5H",
+    "6H",
+    "7H",
+    "8H"
+    ],
+  "shot": [
+    "第1打",
+    "第2打",
+    "第3打"
+    ],
+  "type": [
+    "teeShot",
+    "birdiePad",
+    "parPad",
+    "bogeyPad",
+    "doubleBogeyPad"
+    ]
+}

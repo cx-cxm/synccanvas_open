@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+    <style type="text/css">
+      * {margin:0px; padding:0px;}
+      body {width:900px;}
+      .title {padding:10px;}
+      .main {padding-left:10px; margin:auto;}
+      /* .toolbar {} */
+      .hol li {text-align:center; line-height:44px; font-size:100%; width:44px; height:44px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
+      .play li {text-align:center; line-height:44px; font-size:100%; width:66px; height:44px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
+      .shot li {text-align:center; line-height:44px; font-size:100%; width:66px; height:44px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
+      .txt li {text-align:center; line-height:80px; font-size:175%; width:200px; height:80px; margin:auto;list-style-type: none; border:1px solid #ccc; border-radius:6px; margin:10px; display:block; float:left;}
+      #black {background-color:black;}
+      #red {background-color:red;}
+      #green {background-color:green;}
+      #blue {background-color:blue;}
+      #small {text-align:center; line-height:44px; font-size:100%;}
+      #middle {text-align:center; line-height:44px; font-size:200%;}
+      #large {text-align:center; line-height:44px; font-size:400%;}
+      .canvas {width:450px; height:400px; border:1px solid #ccc;}
+      .canvas canvas {width:450px; height:400px;}
+      #comment {text-align:center; line-height:44px; font-size:100%;width:800px;margin:10px;}
+      #timer {text-align:center; line-height:44px; font-size:400%;}
+      .classA {padding-left:10px; margin:auto; display:flex}
+      .classB {padding-left:10px; margin:auto; display:flex}
+      .ma {margin:5px}
+      h1{text-align:center; }
+      .center {text-align:center;}
+      #submit {width: 300px;padding: 30px;}
+    </style>
+
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <br>
+      <!-- Main -->
+  <div class="main">
+    <div class="classA">
+      <div class="play">
+        <select class="player ma " id="player1">
+          <option value=''></option>
+          <!--option value='playerA' id='playerA' <%= player1 == 'playerA' ? 'selected' : ''%>>playerA</option>
+          <option value='playerB' id='playerB'<%= player1 == 'playerB' ? 'selected' : ''%>>playerB</option>
+          <option value='playerC' id='playerC'<%= player1 == 'playerC' ? 'selected' : ''%>>playerC</option-->
+        </select>
+        </div>
+  
+      <div class="hol">
+        <select class="hole ma" id="hole1">
+          <option value=''></option>
+          <!--option value='1H' <%= hole1 == '1H' ? 'selected' : ''%>>1H</option>
+          <option value='2H' <%= hole1 == '2H' ? 'selected' : ''%>>2H</option>
+          <option value='3H' <%= hole1 == '3H' ? 'selected' : ''%>>3H</option-->
+        </select>
+      </div>
+  
+      <div class="sho">
+        <select class="shot ma" id="shot1">
+          <option value=''></option>
+          <!--option value='shot1' <%= shot1 == 'shot1' ? 'selected' : ''%>>shot1</option>
+          <option value='shot2' <%= shot1 == 'shot2' ? 'selected' : ''%>>shot2</option>
+          <option value='shot3' <%= shot1 == 'shot3' ? 'selected' : ''%>>shot3</option-->
+        </select>
+      </div>
+  
+      <div class="typ">
+        <select class="type ma" id="type1">
+          <option value=''></option>
+          <!--option value='teeShot'  <%= type1 == 'teeShot' ? 'selected' : ''%>>teeShot</option>
+          <option value='birdiePad'  <%= type1 == 'birdiePad' ? 'selected' : ''%>>birdiePad</option>
+          <option value='parPad'  <%= type1 == 'parPad' ? 'selected' : ''%>>parPad</option>
+          <option value='bogeyPad'  <%= type1 == 'bogeyPad' ? 'selected' : ''%>>bogeyPad</option>
+          <option value='DoubleBogeyPad'  <%= type1 == 'DoubleBogeyPad' ? 'selected' : ''%>>DoubleBogeyPad</option-->
+        </select>
+        <input type="button" id='clearA' value='clear'/>
+      </div>
+      </div>
+  
+  
+
+  
+      <div class="classB">
+        <div class="play">
+          <select class="player ma" id="player2">
+            <option value=''></option>
+          <!--option value='playerA' id='playerA' <%= player2 == 'playerA' ? 'selected' : ''%>>playerA</option>
+          <option value='playerB' id='playerB'<%= player2 == 'playerB' ? 'selected' : ''%>>playerB</option>
+          <option value='playerC' id='playerC'<%= player2 == 'playerC' ? 'selected' : ''%>>playerC</option-->
+          </select>
+          </div>
+    
+        <div class="hol">
+          <select class="hole ma" id="hole2">
+            <option value=''></option>
+            <!--option value='1H' <%= hole2 == '1H' ? 'selected' : ''%>>1H</option>
+            <option value='2H' <%= hole2 == '2H' ? 'selected' : ''%>>2H</option>
+            <option value='3H' <%= hole2 == '3H' ? 'selected' : ''%>>3H</option-->
+          </select>
+        </div>
+    
+        <div class="sho">
+          <select class="shot ma" id="shot2">
+            <option value=''></option>
+            <!--option value='shot1' <%= shot2 == 'shot1' ? 'selected' : ''%>>shot1</option>
+            <option value='shot2' <%= shot2== 'shot2' ? 'selected' : ''%>>shot2</option>
+            <option value='shot3' <%= shot2 == 'shot3' ? 'selected' : ''%>>shot3</option-->
+          </select>
+        </div>
+    
+        <div class="typ">
+          <select class="type ma" id="type2">
+            <option value=''></option>
+            <!--option value='teeShot'  <%= type2 == 'teeShot' ? 'selected' : ''%>>teeShot</option>
+            <option value='birdiePad'  <%= type2 == 'birdiePad' ? 'selected' : ''%>>birdiePad</option>
+            <option value='parPad'  <%= type2 == 'parPad' ? 'selected' : ''%>>parPad</option>
+            <option value='bogeyPad'  <%= type2 == 'bogeyPad' ? 'selected' : ''%>>bogeyPad</option>
+            <option value='DoubleBogeyPad'  <%= type2 == 'DoubleBogeyPad' ? 'selected' : ''%>>DoubleBogeyPad</option-->
+          </select>
+          <input type="button" id='clearB' value='clear'/>
+        </div>
+        </div>
+  
+  
+      <div style="clear:left;"></div>
+      <!--div class="canvas"><canvas id="myCanvas"></canvas></div-->
+    </div>
+    <br>
+    <div class="txt">
+     <ul class="txt1">
+      <li id='player_txt1'><%= player1 %></li>
+      <li id='hole_txt1'><%= hole1 %></li>
+      <li id='shot_txt1'><%= shot1 %></li>
+      <li id='type_txt1'><%= type1 %></li>
+     </ul>
+     <ul class="txt2">
+      <li id='player_txt2'><%= player2 %></li>
+      <li id='hole_txt2'><%= hole2 %></li>
+      <li id='shot_txt2'><%= shot2 %></li>
+      <li id='type_txt2'><%= type2 %></li>
+     </ul>
+    </div>
+  
+  
+    <input type="text" id="comment" value="<%= message %>"/>
+    <br>
+    <br>
+    <div class="center"><input type="button" id="submit" value='submit'/></div>
+    <br>
+    <br>
+    <br>
+  
+    <p id="timer"></p>
+    <input type="number" id="num" value="30" step="15" min="0"/>
+    <input type="button" id="start" value='count'/>
+
+
+    <form action='./upload' method="post" enctype="multipart/form-data" >
+      <input type="file" name="file" > <br>
+      <input type="submit" value="送信" >
+    </form>
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+
+      var arr = 2 // 送信データ列数
+
+
+      for(i=0;i<arr;i++){
+      //select要素を取得する
+      const selectPlayer = document.getElementsByClassName('player')[i];
+      var data = "<%= data_player %>"
+      data = data.split(',')
+      data.forEach(function(element, index, array){
+      //option要素を新しく作る
+      const option1 = document.createElement('option');
+      //option要素にvalueと表示名を設定
+      option1.value = data[index];
+      option1.textContent = data[index];
+      //select要素にoption要素を追加する
+      selectPlayer.appendChild(option1)
+      });
+    }
+
+    for(i=0;i<arr;i++){
+      //select要素を取得する
+      const selectPlayer = document.getElementsByClassName('hole')[i];
+      var data = "<%= data_hole %>"
+      data = data.split(',')
+      data.forEach(function(element, index, array){
+      //option要素を新しく作る
+      const option1 = document.createElement('option');
+      //option要素にvalueと表示名を設定
+      option1.value = data[index];
+      option1.textContent = data[index];
+      //select要素にoption要素を追加する
+      selectPlayer.appendChild(option1)
+      });
+    }
+
+    for(i=0;i<arr;i++){
+      //select要素を取得する
+      const selectPlayer = document.getElementsByClassName('shot')[i];
+      var data = "<%= data_shot %>"
+      data = data.split(',')
+      data.forEach(function(element, index, array){
+      //option要素を新しく作る
+      const option1 = document.createElement('option');
+      //option要素にvalueと表示名を設定
+      option1.value = data[index];
+      option1.textContent = data[index];
+      //select要素にoption要素を追加する
+      selectPlayer.appendChild(option1)
+      });
+    }
+
+    for(i=0;i<arr;i++){
+      //select要素を取得する
+      const selectPlayer = document.getElementsByClassName('type')[i];
+      var data = "<%= data_type %>"
+      data = data.split(',')
+      data.forEach(function(element, index, array){
+      //option要素を新しく作る
+      const option1 = document.createElement('option');
+      //option要素にvalueと表示名を設定
+      option1.value = data[index];
+      option1.textContent = data[index];
+      //select要素にoption要素を追加する
+      selectPlayer.appendChild(option1)
+      });
+    }
+
+
+
+
+        
+  
+        // サーバーサイドのsocket.IOに接続する
+        // 接続出来たら、サーバー側のコンソールにconnected!と表示される
+        var socket = io.connect("/");
+  
+  
+        $('#start').click(function(e){
+      e.preventDefault();
+      var count = $('#num').val()
+      var id = setInterval(function(){
+        count--;
+        $('#timer').html(count);
+        socket.emit("sendCount", count);
+        if(count <= 0) clearInterval(id);
+      },1000);
+  
+    });
+   
+  
+          $('#submit').click(function(e){
+             e.preventDefault();
+             socket.emit("hole_click1", $('#hole1').val());
+             socket.emit("player_click1", $('#player1').val());
+             socket.emit("shot_click1", $('#shot1').val());
+             socket.emit("type_click1", $('#type1').val());
+  
+             socket.emit("hole_click2", $('#hole2').val());
+             socket.emit("player_click2", $('#player2').val());
+             socket.emit("shot_click2", $('#shot2').val());
+             socket.emit("type_click2", $('#type2').val());
+  
+             socket.emit("sendMessage", $("#comment").val());
+            // txt部分にselectで選択した項目を表示
+            $("#hole_txt1").html($('#hole1').val());
+            $("#player_txt1").html($('#player1').val());
+            $("#shot_txt1").html($('#shot1').val());
+            $("#type_txt1").html($('#type1').val());
+            $("#hole_txt2").html($('#hole2').val());
+            $("#player_txt2").html($('#player2').val());
+            $("#shot_txt2").html($('#shot2').val());
+            $("#type_txt2").html($('#type2').val());
+
+        });
+  
+  
+        socket.on("hole_click1", function (data) {
+          console.log("on click : " + data);
+          $("#hole_txt1").html(data);
+          $('#hole1').val(data)
+        });
+        socket.on("player_click1", function (data) {
+          console.log("on click : " + data);
+          $("#player_txt1").html(data);
+          $('#player1').val(data)
+        });
+        socket.on("shot_click1", function (data) {
+          console.log("on click : " + data);
+          $("#shot_txt1").html(data);
+          $('#shot1').val(data)
+        });
+        socket.on("type_click1", function (data) {
+          console.log("on click : " + data);
+          $("#type_txt1").html(data);
+          $('#type1').val(data)
+        });
+  
+  
+  
+        socket.on("hole_click2", function (data) {
+          console.log("on click : " + data);
+          $("#hole_txt2").html(data);
+          $('#hole2').val(data)
+        });
+        socket.on("player_click2", function (data) {
+          console.log("on click : " + data);
+          $("#player_txt2").html(data);
+          $('#player2').val(data)
+        });
+        socket.on("shot_click2", function (data) {
+          console.log("on click : " + data);
+          $("#shot_txt2").html(data);
+          $('#shot2').val(data)
+        });
+        socket.on("type_click2", function (data) {
+          console.log("on click : " + data);
+          $("#type_txt2").html(data);
+          $('#type2').val(data)
+        });
+  
+  
+  
+        socket.on("sendMessage", function (data) {
+          console.log("on click : " + data);
+          $("#comment").val(data);
+        });
+  
+        socket.on("sendCount", function (data) {
+          console.log("on click : " + data);
+          $("#timer").html(data);
+        });
+  
+
+
+
+
+        $('#clearA').click(function(){
+          $("#player1").val("")
+          $("#hole1").val("")
+          $("#shot1").val("")
+          $("#type1").val("")
+        });
+
+        $('#clearB').click(function(){
+          $("#player2").val("")
+          $("#hole2").val("")
+          $("#shot2").val("")
+          $("#type2").val("")
+        });
+
+
+                                 
+      }, false); 
+      </script>
+  </body>
+</html>
+
+
+
+<!--html>
+<head>
+  <meta charset="utf-8">
+  <title>sync canvas</title>
+
+</head>
+<body>
+
+  <h1 class="title">Sync Canvas</h1>
+
+
+    
+
+</body>
+</html-->

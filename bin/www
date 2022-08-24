@@ -1,0 +1,162 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('synccanvas:server');
+var http = require('http');
+var socketIO = require("socket.io");//
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+var io = socketIO(server);//
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+
+
+// 接続されたら、connected!とコンソールにメッセージを表示します。
+io.sockets.on("connection", function (socket) {
+  console.log("connected");
+
+
+  socket.on("player_click1", function (click) {
+    console.log(click);
+    socket.broadcast.emit("player_click1", click);
+    app.set('player1', click);
+  });
+  socket.on("hole_click1", function (click) {
+    console.log(click);
+    socket.broadcast.emit("hole_click1", click);
+    app.set('hole1', click);
+  });
+  socket.on("shot_click1", function (click) {
+    console.log(click);
+    socket.broadcast.emit("shot_click1", click);
+    app.set('shot1', click);
+  });
+  socket.on("type_click1", function (click) {
+    console.log(click);
+    socket.broadcast.emit("type_click1", click);
+    app.set('type1', click);
+  });
+
+  socket.on("player_click2", function (click) {
+    console.log(click);
+    socket.broadcast.emit("player_click2", click);
+    app.set('player2', click);
+  });
+  socket.on("hole_click2", function (click) {
+    console.log(click);
+    socket.broadcast.emit("hole_click2", click);
+    app.set('hole2', click);
+  });
+  socket.on("shot_click2", function (click) {
+    console.log(click);
+    socket.broadcast.emit("shot_click2", click);
+    app.set('shot2', click);
+  });
+  socket.on("type_click2", function (click) {
+    console.log(click);
+    socket.broadcast.emit("type_click2", click);
+    app.set('type2', click);
+  });
+
+
+
+
+
+  socket.on('sendMessage', (message) => {
+    console.log(message);
+    socket.broadcast.emit('sendMessage', message);
+    app.set('message', message);
+  });
+
+  socket.on('sendCount', (count) => {
+    console.log(count);
+    socket.broadcast.emit('sendCount', count);
+    app.set('count',count );
+  });
+  
+})
+
+
+
